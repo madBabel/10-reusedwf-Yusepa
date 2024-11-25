@@ -14,7 +14,7 @@ jobs:
     callToWd:
         runs-on: ubuntu-latest
         steps:
-            - uses: /workspaces/10-reusedwf-Yusepa/.github/workflows/10.b-caller-workflow.yml
+            - uses: ./.github/workflows/10.b-caller-workflow.yml
               with:
                 dry-run: ${{ inputs.dry-run }}
                 target: ${{ inputs.target }}
