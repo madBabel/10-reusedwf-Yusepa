@@ -26,4 +26,5 @@ jobs:
         if: ${{ startsWith(needs.callToWd.outputs.salida, 'Deploying') }}
         steps:
             - run: |
+                echo "yusepa: needs.callToWd.outputs.salida"
                 echo "Check deploying Done"
