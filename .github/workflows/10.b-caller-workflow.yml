@@ -20,3 +20,11 @@ jobs:
         with:
             dry-run: ${{ inputs.dry-run }}
             target: ${{ inputs.target }}
+    checkDeploying:
+        runs-on: ubuntu-latest
+        needs: callToWd
+        if: ${{ needs.callToWd.outputs.salida }}
+        steps:
+            - run: |
+                echo "Resultado ${{ needs.callToWd.result}}"
+                echo "Check deploying Done"
