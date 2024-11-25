@@ -25,5 +25,5 @@ jobs:
         needs: callToWd
         steps:
             - run: |
-                echo "Resultado ${{ needs.callToWd.result}}"
+                echo "Resultado ${{ needs.callToWd.outputs.salida }}"
                 echo "Check deploying Done"
