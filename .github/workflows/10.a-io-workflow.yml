@@ -42,12 +42,13 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         outputs:
-            resultado: ${{ steps.Deploy.outputs.resultado }}
+            resultado: ${{ steps.deploy.outputs.resultado }}
         needs: build
         if: ${{ !inputs.dry-run && needs.build.outputs.build-status == 'success'}}
         environment: ${{ inputs.target }}
         steps:
             - name: Deploy
+              id: deploy
               run: |
                 echo "resultado = Deploying to: ${{ inputs.target }} using tag ${{ needs.build.outputs.tag }}"  >> "$GITHUB_OUTPUT"
         
