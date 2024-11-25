@@ -1,0 +1,18 @@
+name: Usar WF Reutilizable C
+on:
+    workflow_dispatch:
+        inputs:
+            dry-run:
+                description: "Skip deployment and only print build output"
+                type: boolean
+                default: false
+            target:
+                description: "Which environment the workflow will target"
+                type: environment
+                required: true
+jobs:
+    callToFarWd:
+        uses: madBabel/test-external-wf/.github/workflows/10.a-io-workflow-yusepa.yml@v1
+        with:
+            dry-run: ${{ inputs.dry-run }}
+            target: ${{ inputs.target }}

@@ -1,0 +1,29 @@
+name: WF Reutilizable
+on:
+    workflow_dispatch:
+        inputs:
+            dry-run:
+                description: "Skip deployment and only print build output"
+                type: boolean
+                default: false
+            target:
+                description: "Which environment the workflow will target"
+                type: choice
+                options:
+                    - int
+                    - prod
+                default: 'true'
+                required: true
+jobs:
+    callToWd:
+        uses: ./.github/workflows/10.a-io-workflow.yml
+        with:
+            dry-run: ${{ inputs.dry-run }}
+            target: ${{ inputs.target }}
+    checkDeploying:
+        runs-on: ubuntu-latest
+        needs: callToWd
+        if: ${{ startsWith(needs.callToWd.outputs.salida, 'Deploying') }}
+        steps:
+            - run: |
+                echo "Check deploying Done"
