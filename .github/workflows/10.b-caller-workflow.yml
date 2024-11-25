@@ -23,7 +23,7 @@ jobs:
     checkDeploying:
         runs-on: ubuntu-latest
         needs: callToWd
+        if: ${{ startsWith(needs.callToWd.outputs.salida, 'Deploying') }}
         steps:
             - run: |
-                echo "Resultado ${{ needs.callToWd.outputs.salida }}"
                 echo "Check deploying Done"
