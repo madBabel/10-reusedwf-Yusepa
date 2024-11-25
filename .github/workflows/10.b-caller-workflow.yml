@@ -23,7 +23,6 @@ jobs:
     checkDeploying:
         runs-on: ubuntu-latest
         needs: callToWd
-        if: ${{ needs.callToWd.outputs.salida }}
         steps:
             - run: |
                 echo "Resultado ${{ needs.callToWd.result}}"
