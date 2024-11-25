@@ -12,7 +12,7 @@ on:
                 required: true
 jobs:
     callToFarWd:
-        uses: madBabel/test-external-wf/.github/workflows/10.a-io-workflow-yusepa.yml@v4
+        uses: madBabel/test-external-wf/.github/workflows/10.a-io-workflow-yusepa.yml@v1
         with:
             dry-run: ${{ inputs.dry-run }}
             target: ${{ inputs.target }}
