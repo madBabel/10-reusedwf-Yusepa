@@ -8,7 +8,11 @@ on:
                 default: false
             target:
                 description: "Which environment the workflow will target"
-                type: environment
+                type: choice
+                options:
+                    - true
+                    - false
+                default: 'true'
                 required: true
 jobs:
     callToWd:
