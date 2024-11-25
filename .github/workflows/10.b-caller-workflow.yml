@@ -16,7 +16,7 @@ on:
                 required: true
 jobs:
     callToWd:
-        uses: ./.github/workflows/10.b-caller-workflow.yml
+        uses: .github/workflows/10.b-caller-workflow.yml
         with:
             dry-run: ${{ inputs.dry-run }}
             target: ${{ inputs.target }}
