@@ -1,0 +1,20 @@
+name: WF Reutilizable
+on:
+    workflow_dispatch:
+        inputs:
+            dry-run:
+                description: "Skip deployment and only print build output"
+                type: boolean
+                default: false
+            target:
+                description: "Which environment the workflow will target"
+                type: environment
+                required: true
+jobs:
+    callToWd:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: /workspaces/10-reusedwf-Yusepa/.github/workflows/10.b-caller-workflow.yml
+              with:
+                dry-run: ${{ inputs.dry-run }}
+                target: ${{ inputs.target }}
